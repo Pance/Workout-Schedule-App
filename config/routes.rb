@@ -1,7 +1,12 @@
 WorkoutApp::Application.routes.draw do
-  get "users/new"
+
+  get "pages/home"
 
 	match '/signup', to: 'users#new'
+
+	resources :users
+
+	root :to => "pages#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
