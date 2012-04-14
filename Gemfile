@@ -8,6 +8,7 @@ group :development, :test do
 	gem 'rspec-rails', '2.9.0'
 	gem 'guard-rspec', '0.5.5'
 	gem 'growl', '1.0.3'
+	gem 'factory_girl_rails', '1.4.0'
 end
 
 # Gems used only for assets and not required
