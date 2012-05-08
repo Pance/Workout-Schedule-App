@@ -70,4 +70,20 @@ describe "UserPages" do
 			specify { user.reload.email.should == new_email }
 		end
 	end
+
+	describe "main page" do
+		let(:user) { FactoryGirl.create(:user) }
+		let!(:m1) { FactoryGirl.create(:schedule, user: user) }
+		let!(:m2) { FactoryGirl.create(:schedule, user: user) }
+
+		before { visit user_path(user) }
+
+		it { should have_selector('h1', text: user.name) }
+		it { should have_selector('title', text: user.email) }
+
+		describe "schedules" do
+			it { should have_content("Day 1") }
+			it { should have_content("Day 2") } # TODO This is not a good test
+		end
+	end
 end

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password
 	has_secure_password
+	has_many :schedules, dependent: :destroy
 	before_save :create_remember_token
 
 	validates :name, length: { maximum: 50 }

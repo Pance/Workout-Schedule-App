@@ -12,6 +12,7 @@ describe User do
 	it { should respond_to(:password_digest) }
 	it { should respond_to(:password) }
 	it { should respond_to(:authenticate) }
+	it { should respond_to(:schedules) }
 	it { should respond_to(:remember_token) }
 
 	it { should be_valid }
@@ -85,5 +86,28 @@ describe User do
 	describe "remember token" do
 		before { @user.save }
 		its(:remember_token) { should_not be_blank }
+	end
+	
+	describe "schedule associations" do
+
+		before { @user.save }
+		let!(:older_schedule) do
+			FactoryGirl.create(:schedule, user: @user, created_at: 1.day.ago)
+		end
+		let!(:newer_schedule) do
+			FactoryGirl.create(:schedule, user: @user, created_at: 1.hour.ago)
+		end
+
+		it "should have the right schedules in the right order" do
+			@user.schedules.should == [older_schedule, newer_schedule]
+		end
+
+		it "should destroy associated schedules" do
+			schedules = @user.schedules
+			@user.destroy
+			schedules.each do |schedule|
+				Schedule.find_by_id(schedule.id).should be_nil
+			end
+		end
 	end
 end

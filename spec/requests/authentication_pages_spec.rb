@@ -93,8 +93,24 @@ describe "Authentication" do
 					it "should render the desired protected page" do
 						page.should have_selector('title', text: 'Edit user')
 					end
+				end #of describe "after signing
+			end #of describe "when attempting
+
+			describe "in the Schedules controller" do
+
+				describe "submitting to the create action" do
+					before { post schedules_path }
+					specify { response.should redirect_to(signin_path) }
+				end
+	
+				describe "submitting to the destroy action" do
+					before do
+						schedule = FactoryGirl.create(:schedule)
+						delete schedule_path(schedule)
+					end
+					specify { response.should redirect_to(signin_path) }
 				end
 			end
-		end
+		end #of describe "for non-signed
 	end	
 end

@@ -1,2 +1,10 @@
+<% if signed_in? %>
+	<%= render 'shared/user_info' %>
+	<%= render 'shared/schedule_form' %>
+<% else %>
 <h1>Workout Randomizer</h1>
 <h3>Hello! Welcome to the Workout Randomizer app</h3>
+
+<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+
+<% end %>
