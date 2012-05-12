@@ -2,4 +2,4 @@ Workout Schedule Appplication
 
 By Peter Barnett (pbarnett888@gmail.com)
 
-Try this applicatino at: http://evening-day-3499.herokuapp.com/
+Try this application at: http://evening-day-3499.herokuapp.com/
