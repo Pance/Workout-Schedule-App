@@ -1,1 +1,7 @@
 <td>Day <%= schedule.user_id %></td>
+	<% if current_user?(schedule.user) %>
+		<%= link_to "delete", schedule, method: :delete,
+																	 	confirm: "You sure?",
+																		title: "Schedule: " + schedule.id %>
+	<% end %>
+

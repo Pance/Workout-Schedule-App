@@ -13,6 +13,7 @@ describe User do
 	it { should respond_to(:password) }
 	it { should respond_to(:authenticate) }
 	it { should respond_to(:schedules) }
+	it { should respond_to(:schedule_list) }
 	it { should respond_to(:remember_token) }
 
 	it { should be_valid }
@@ -108,6 +109,16 @@ describe User do
 			schedules.each do |schedule|
 				Schedule.find_by_id(schedule.id).should be_nil
 			end
+		end
+
+		describe "status" do
+			let(:other_schedule) do
+				FactoryGirl.create(:schedule, user: FactoryGirl.create(:user))
+			end
+
+			its(:schedule_list) { should include(newer_schedule) }
+			its(:schedule_list) { should include(older_schedule) }
+			its(:schedule_list) { should_not include(other_schedule) }
 		end
 	end
 end

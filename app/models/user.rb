@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	validates :password, length: { minimum: 6 }
 
+	def schedule_list
+		Schedule.where("user_id = ?", id)
+	end
+
 	private
 
 		def create_remember_token

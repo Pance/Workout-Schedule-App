@@ -1,0 +1,6 @@
+<% if @schedule_list_items.any? %>
+	<h3>Schedule:</h3>
+	<%= render partial: 'shared/schedule_item', collection: @schedule_list_items %>
+<% else %>
+	<h3>Schedule Empty!</h3>
+<% end %>
