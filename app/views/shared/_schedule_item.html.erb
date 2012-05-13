@@ -1,3 +1,4 @@
+<li id="<%= schedule_item.id %>">
 SCHEDULE <%= schedule_item.id %>
 <% if current_user?(schedule_item.user) %>
 	<%= link_to "delete", schedule_item, method: :delete,

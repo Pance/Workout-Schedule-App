@@ -1,11 +1,20 @@
 <% if signed_in? %>
-	<%= render 'shared/user_info' %>
-	<%= render 'shared/schedule_form' %>
-	<%= render 'shared/schedule_list' %>
+	<div class="row">
+		<aside class="span4">
+			<section>
+				<%= render 'shared/user_info' %>
+			</section>
+		</aside>
+			<section>
+				<%= render 'shared/schedule_list' %>
+				<%= render 'shared/schedule_form' %>
+			</section>
+	</div>
 <% else %>
-<h1>Workout Randomizer</h1>
-<h3>Hello! Welcome to the Workout Randomizer app</h3>
-
-<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+<div class="center hero-unit">
+	<h1>Welcome to the Workout Randomizer App!</h1>
+  <h3>Try it out!</h3>
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 
 <% end %>
+</div>
