@@ -4,4 +4,6 @@ SCHEDULE <%= schedule_item.id %>
 	<%= link_to "delete", schedule_item, method: :delete,
 																			 confirm: "You sure?",
 																			 title: "Schedule" + schedule_item.id.to_s %>
+	<%= render 'shared/element_form' %>
 <% end %>
+</li>

@@ -1,0 +1,5 @@
+<%= form_for(@element) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.submit "Add Element to Schedule", class: "btn btn-large btn-primary" %>
+<% end %>
+	
