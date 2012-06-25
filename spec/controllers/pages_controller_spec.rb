@@ -8,5 +8,14 @@ describe PagesController do
       response.should be_success
     end
   end
-
+  
+  #describe "home page" do
+  
+  #  let(:user) { FactoryGirl.create(:user) }
+  
+   # it "should have the user's email" do    
+   #   visit '/'
+   #   .should have_selector('h1', text: user.email)
+  #  end
+  #end
 end
